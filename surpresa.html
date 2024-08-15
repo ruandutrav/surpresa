@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa Divertida</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 300px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+        }
+        .button.yes {
+            background-color: #4caf50;
+        }
+        .button.no {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Você pode me dar o C#?</h1>
+        <button class="button yes" onclick="showMessage()">Sim</button>
+        <button class="button no" id="noButton" onclick="moveButton()">Não</button>
+        <p id="message" style="display:none; color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').innerText = 'Parabéns! Você ganhou um C#!';
+            document.getElementById('message').style.display = 'block';
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            const container = document.querySelector('.container');
+            const maxX = container.clientWidth - button.clientWidth;
+            const maxY = container.clientHeight - button.clientHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        // Ajusta a posição inicial do botão "Não" para ser dentro do container
+        document.getElementById('noButton').style.position = 'relative';
+    </script>
+</body>
+</html>
